@@ -19,7 +19,7 @@ public class Main {
         List<Beverage> beverages = new ArrayList<>();
         Integer numOfOutlet = 0;
 
-        numOfOutlet = new CustomDeserializer().deserialize(ingradientStorage, beverages, "input.json");
+        numOfOutlet = new CustomDeserializer().deserialize(ingradientStorage, beverages, "input2.json");
 
         MachineManager machineManager = new MachineManager(ingradientStorage, beverages, numOfOutlet);
 

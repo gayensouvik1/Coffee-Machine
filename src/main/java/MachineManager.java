@@ -39,7 +39,6 @@ public class MachineManager {
             Runnable preparationTask = new PreparationTask(beverage);
             outlet.execute(preparationTask);
         }else if(!ingradientStorage.getRefillRunning() && isRefillRequired()){
-
             Runnable refillTask = new RefillTask(ingradientStorage);
             refill.execute(refillTask);
         }
