@@ -12,9 +12,12 @@ import java.util.Map;
  */
 public abstract class Beverage {
 
-    public Beverage(String name, List<Ingradient> ingradients) {
+    protected String name;
+    protected List<Ingredient> Ingredients;
+
+    public Beverage(String name, List<Ingredient> Ingredients) {
         this.name = name;
-        this.ingradients = ingradients;
+        this.Ingredients = Ingredients;
         this.isAlreadyServing = false;
     }
 
@@ -26,16 +29,13 @@ public abstract class Beverage {
         this.name = name;
     }
 
-    public List<Ingradient> getIngradients() {
-        return ingradients;
+    public List<Ingredient> getIngredients() {
+        return Ingredients;
     }
 
-    public void setIngradients(List<Ingradient> ingradients) {
-        this.ingradients = ingradients;
+    public void setIngredients(List<Ingredient> Ingredients) {
+        this.Ingredients = Ingredients;
     }
-
-    protected String name;
-    protected List<Ingradient> ingradients;
 
     public boolean isAlreadyServing() {
         return isAlreadyServing;
@@ -47,15 +47,15 @@ public abstract class Beverage {
 
     protected boolean isAlreadyServing;
 
-    public boolean isAllIngradientsAvailable() {
-        return isAllIngradientsAvailable;
+    public boolean isAllIngredientsAvailable() {
+        return isAllIngredientsAvailable;
     }
 
-    public void setAllIngradientsAvailable(boolean allIngradientsAvailable) {
-        isAllIngradientsAvailable = allIngradientsAvailable;
+    public void setAllIngredientsAvailable(boolean allIngredientsAvailable) {
+        isAllIngredientsAvailable = allIngredientsAvailable;
     }
 
-    protected boolean isAllIngradientsAvailable;
+    protected boolean isAllIngredientsAvailable;
 
 
 }

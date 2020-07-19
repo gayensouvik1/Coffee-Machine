@@ -8,23 +8,23 @@ import java.util.Map;
  */
 public class BeverageFactory {
 
-    public Beverage getBeverage(String beverage, List<Ingradient> ingradients, final Boolean allIngradientsAvailable){
+    public Beverage getBeverage(String beverage, List<Ingredient> Ingredients, final Boolean allIngredientsAvailable){
         switch (beverage){
             case "hot_tea":
-                return new HotTeaBeverage(beverage, ingradients){{
-                    setAllIngradientsAvailable(allIngradientsAvailable);
+                return new HotTeaBeverage(Ingredients){{
+                    setAllIngredientsAvailable(allIngredientsAvailable);
                 }};
             case "hot_coffee":
-                return new HotCoffeeBeverage(beverage, ingradients){{
-                    setAllIngradientsAvailable(allIngradientsAvailable);
+                return new HotCoffeeBeverage(Ingredients){{
+                    setAllIngredientsAvailable(allIngredientsAvailable);
                 }};
             case "black_tea":
-                return new BlackTeaBeverage(beverage, ingradients){{
-                    setAllIngradientsAvailable(allIngradientsAvailable);
+                return new BlackTeaBeverage(Ingredients){{
+                    setAllIngredientsAvailable(allIngredientsAvailable);
                 }};
             case "green_tea":
-                return new GreenTeaBeverage(beverage, ingradients){{
-                    setAllIngradientsAvailable(allIngradientsAvailable);
+                return new GreenTeaBeverage(Ingredients){{
+                    setAllIngredientsAvailable(allIngredientsAvailable);
                 }};
             default:
                 return null;

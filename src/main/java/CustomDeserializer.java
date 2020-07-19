@@ -1,8 +1,8 @@
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Beverage;
-import models.Ingradient;
-import models.IngradientStorage;
+import models.Ingredient;
+import models.IngredientStorage;
 
 import java.io.File;
 import java.util.*;
@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class CustomDeserializer {
 
-    public Integer deserialize(IngradientStorage ingradientStorage, List<Beverage> beverages, String file) {
+    public Integer deserialize(IngredientStorage IngredientStorage, List<Beverage> beverages, String file) {
 
         ObjectMapper mapper = new ObjectMapper();
         Integer numOfOutlet = -1;
@@ -32,29 +32,29 @@ public class CustomDeserializer {
             numOfOutlet = (Integer) outlets.get("count_n");
 
 
-            Map<String, Boolean> existingIngradientsInStorage = new HashMap<>();
-            IngradientFactory ingradientFactory = new IngradientFactory();
+            Map<String, Boolean> existingIngredientsInStorage = new HashMap<>();
+            IngredientFactory IngredientFactory = new IngredientFactory();
 
             for (Map.Entry<String, Object> entry : total_items_quantity.entrySet()) {
-                Ingradient ingradient = ingradientFactory.getIngradient(entry.getKey(), (Integer) entry.getValue());
-                ingradientStorage.addIngradient(entry.getKey(), ingradient);
-                existingIngradientsInStorage.put(entry.getKey(), true);
+                Ingredient Ingredient = IngredientFactory.getIngredient(entry.getKey(), (Integer) entry.getValue());
+                IngredientStorage.addIngredient(entry.getKey(), Ingredient);
+                existingIngredientsInStorage.put(entry.getKey(), true);
             }
 
             BeverageFactory beverageFactory = new BeverageFactory();
 
 
             for (Map.Entry<String, Object> entry : beverageMap.entrySet()) {
-                LinkedHashMap<String, Object> ingradients = (LinkedHashMap<String, Object>) entry.getValue();
-                List<Ingradient> ingradientList = new ArrayList<>();
-                boolean allIngradientsAvailable = true;
-                for (Map.Entry<String, Object> entry1 : ingradients.entrySet()) {
-                    ingradientList.add(ingradientFactory.getIngradient(entry1.getKey(), (Integer) entry1.getValue()));
-                    if (!existingIngradientsInStorage.containsKey(entry1.getKey())) {
-                        allIngradientsAvailable = false;
+                LinkedHashMap<String, Object> Ingredients = (LinkedHashMap<String, Object>) entry.getValue();
+                List<Ingredient> IngredientList = new ArrayList<>();
+                boolean allIngredientsAvailable = true;
+                for (Map.Entry<String, Object> entry1 : Ingredients.entrySet()) {
+                    IngredientList.add(IngredientFactory.getIngredient(entry1.getKey(), (Integer) entry1.getValue()));
+                    if (!existingIngredientsInStorage.containsKey(entry1.getKey())) {
+                        allIngredientsAvailable = false;
                     }
                 }
-                Beverage beverage = beverageFactory.getBeverage(entry.getKey(), ingradientList, allIngradientsAvailable);
+                Beverage beverage = beverageFactory.getBeverage(entry.getKey(), IngredientList, allIngredientsAvailable);
                 beverages.add(beverage);
             }
 

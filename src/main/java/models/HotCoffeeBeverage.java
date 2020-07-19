@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class HotCoffeeBeverage extends Beverage {
 
-    public HotCoffeeBeverage(String name, List<Ingradient> ingradients) {
-        super(name, ingradients);
+    public HotCoffeeBeverage(List<Ingredient> Ingredients) {
+        super("hot_coffee", Ingredients);
     }
 }

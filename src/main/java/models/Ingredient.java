@@ -3,9 +3,9 @@ package models;
 /**
  * Created by souvik.gayen on 18/07/20
  */
-public abstract class Ingradient {
+public abstract class Ingredient {
 
-    protected Ingradient(String name, Integer quantity) {
+    protected Ingredient(String name, Integer quantity) {
         this.name = name;
         this.quantity = quantity;
         this.maxQuantity = quantity;

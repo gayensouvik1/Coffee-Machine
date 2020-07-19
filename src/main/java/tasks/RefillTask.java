@@ -1,7 +1,7 @@
 package tasks;
 
-import models.Ingradient;
-import models.IngradientStorage;
+import models.Ingredient;
+import models.IngredientStorage;
 
 import java.util.Map;
 
@@ -10,17 +10,17 @@ import java.util.Map;
  */
 public class RefillTask implements Runnable {
 
-    private IngradientStorage ingradientStorage;
+    private IngredientStorage IngredientStorage;
 
-    public RefillTask(IngradientStorage ingradientStorage) {
-        this.ingradientStorage = ingradientStorage;
+    public RefillTask(IngredientStorage IngredientStorage) {
+        this.IngredientStorage = IngredientStorage;
     }
 
     @Override
     public void run() {
 
-        System.out.println("All Ingradients running low. Refilling them in "+Thread.currentThread());
-        ingradientStorage.setRefillRunning(true);
+        System.out.println("All Ingredients running low. Refilling them in "+Thread.currentThread());
+        IngredientStorage.setRefillRunning(true);
 
         try {
             Thread.sleep(15000);
@@ -28,14 +28,14 @@ public class RefillTask implements Runnable {
             e.printStackTrace();
         }
 
-        for(Map.Entry<String,Ingradient> entry: ingradientStorage.getIngradients().entrySet()){
-            Ingradient ingradient = entry.getValue();
-            ingradient.setQuantity(ingradient.getMaxQuantity());
-            ingradientStorage.getIngradients().put(entry.getKey(),ingradient);
+        for(Map.Entry<String,Ingredient> entry: IngredientStorage.getIngredients().entrySet()){
+            Ingredient Ingredient = entry.getValue();
+            Ingredient.setQuantity(Ingredient.getMaxQuantity());
+            IngredientStorage.getIngredients().put(entry.getKey(),Ingredient);
         }
 
-        ingradientStorage.setRefillRunning(false);
+        IngredientStorage.setRefillRunning(false);
 
-        System.out.println("All Ingradients Refilled");
+        System.out.println("All Ingredients Refilled");
     }
 }

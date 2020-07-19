@@ -9,8 +9,7 @@ import java.util.Map;
 public class HotTeaBeverage extends Beverage {
 
 
-    public HotTeaBeverage(String beverage, List<Ingradient> ingradients) {
-        super(beverage,ingradients);
-
+    public HotTeaBeverage(List<Ingredient> Ingredients) {
+        super("hot_tea",Ingredients);
     }
 }
